@@ -59,6 +59,8 @@
 #include <linux/user_namespace.h>
 #include <linux/binfmts.h>
 #include <linux/uidgid.h>
+#include <linux/kmod.h>
+#include <linux/string.h>
 
 #include "ptsec.h"
 
