@@ -250,7 +250,7 @@ static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 			return -ENOMEM;
 		}
 		size = sizeof(tdm_value);
-		get_degree(file->f_path.dentry, degr, size); 
+		get_degree(bprm->file->f_path.dentry, degr, size); 
 		printk(KERN_INFO "TDM KERN: degree: %d, status: %d\n",
 			degr->deg, degr->sts);
 		if(!degr->sts){
