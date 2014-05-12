@@ -218,6 +218,7 @@ static int ptlsm_vm_enough_memory(struct mm_struct *mm, long pages)
 
 static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 {
+	/*  
 	int ret;
 	char *fullpath;
 	tdm_value *degr;
@@ -264,6 +265,7 @@ static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 	//struct task_pt *bpp = bprm->cred->security;
 	//struct inode_pt *ipp;
 
+	*/
 	rc = cap_bprm_set_creds(bprm);
 	if (rc != 0)
 	{
