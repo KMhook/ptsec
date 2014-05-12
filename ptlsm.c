@@ -225,9 +225,10 @@ static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 	int size;
 	int *tdm_flag;
 	int err;
+	int rc;
 
 
-	struct inode *inode = file_inode(bprm->file);
+	//struct inode *inode = file_inode(bprm->file);
 	tdm_flag = kmalloc(sizeof(int), GFP_KERNEL);
 
 	size = sizeof(int);
@@ -261,20 +262,19 @@ static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 	}
 
 	//struct task_pt *bpp = bprm->cred->security;
-	struct inode_pt *ipp;
-	int rc;
+	//struct inode_pt *ipp;
 
 	rc = cap_bprm_set_creds(bprm);
 	if (rc != 0)
 	{
-		printk("bprm_set_creds: %lu\n", inode->i_ino);
+		printk("bprm_set_creds...\n");
 		return 0;
 	}
 
 	if (bprm->cred_prepared)
 		return 0;
 
-	ipp = inode->i_security;
+	//ipp = inode->i_security;
 	return 0;
 
 }
@@ -633,10 +633,12 @@ static int ptlsm_file_receive(struct file *file)
 
 static int ptlsm_file_open(struct file *file, const struct cred *cred)
 {
+	/*  
 	struct inode_pt *ipp = file_inode(file)->i_security;
 
 	file->f_security = ipp;
 	printk("file_open: i_ino %d\n", ipp->pt_cert->cert_no);
+	*/
 
 	return 0;
 }
