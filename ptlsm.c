@@ -228,6 +228,7 @@ static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 
 
 	struct inode *inode = file_inode(bprm->file);
+	tmd_flag = kmalloc(sizeof(int), GFP_KERNEL);
 
 	size = sizeof(int);
 	err = vfs_getxattr(bprm->file->f_path.dentry, "security.tdmflag", tdm_flag, size);
