@@ -59,6 +59,8 @@
 #include <linux/user_namespace.h>
 #include <linux/binfmts.h>
 #include <linux/uidgid.h>
+
+#include <linux/fsnotify.h>
 #include <linux/kmod.h>
 #include <linux/string.h>
 
@@ -240,7 +242,7 @@ static int ptlsm_bprm_set_creds(struct linux_binprm *bprm)
 			kfree(fullpath);
 			return -ENOMEM;
 		}
-		fullpath = dentry_path_raw(file->f_path.dentry, path, PATH_MAX);
+		fullpath = dentry_path_raw(bprm->file->f_path.dentry, path, PATH_MAX);
 		printk("FILE_PERMISSION: %s\n", fullpath);
 		umh_test(fullpath);
 		degr = kzalloc(sizeof(tdm_value), GFP_NOFS);
