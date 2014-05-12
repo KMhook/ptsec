@@ -566,9 +566,6 @@ static int ptlsm_file_permission(struct file *file, int mask)
 	kfree(path);
 */
 OUT:
-	ret = security_ops->file_permission(file, mask);
-	if (ret)
-		return ret;
 
 	return fsnotify_perm(file, mask);
 }
