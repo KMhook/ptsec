@@ -82,25 +82,6 @@ struct cert_pt *new_cert_pt()
 }
 */
 
-enum tdm_trust_status {
-	UNTRUSTED = 0x00,
-	TRUSTED,
-	UNKNOWN,
-};
-
-typedef short int8;
-
-struct degree{
-	int t1;
-	int t2;
-	int cpu_usage;
-	int mem_usage;
-	int8 deg;
-	int8 thd;
-	enum tdm_trust_status sts;
-} __attribute__((packed));
-
-typedef struct degree tdm_value;
 
 static int get_degree(struct dentry *dentry, tdm_value *degr, int len)
 {
