@@ -340,19 +340,23 @@ static int ptlsm_umount(struct vfsmount *mnt, int flags)
 
 static int ptlsm_inode_alloc_security(struct inode *inode)
 {
+	/*  
 	struct inode_pt *ipp;
 	inode->i_security = new_inode_pt(pt_of_current(), inode->i_ino);
 	if (inode->i_security == NULL)
 		return -ENOMEM;
 	ipp = inode->i_security;
 	printk("inode_alloc_security: %d\n", ipp->pt_no);
+	*/
 	return 0;
 }
 
 static void ptlsm_inode_free_security(struct inode *inode)
 {
+	/*
 	kfree(inode->i_security);
 	inode->i_security = NULL;
+	*/
 }
 
 static int ptlsm_inode_init_security(struct inode *inode, struct inode *dir,
@@ -576,9 +580,11 @@ OUT:
 
 static int ptlsm_file_alloc_security(struct file *file)
 {
+	/*
 	file->f_security = pt_of_current();
 	char *f_cert = file->f_security;
 	printk("i_ino: %ld, cert: %s\n", file->f_inode->i_ino, f_cert); 
+	*/
 	return 0;
 }
 
